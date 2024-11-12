@@ -1,0 +1,623 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212; /* Fond sombre pour la page */
+    color: #000000; /* Texte clair */
+    font-family: Arial, sans-serif;
+}
+
+/* En-tête */
+.header {
+    position: fixed;
+    top: 0;
+    left: 50%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Ajuster pour centrer */
+    background-color: rgba(0, 0, 0, 0.678); /* Couleur avec transparence à 60% */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 75%;
+    box-sizing: border-box;
+    animation: slideDown 0.5s ease-in-out; /* Animation de glissement vers le bas */
+    transition: all 0.3s ease;
+}
+
+/* Animation de glissement */
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Lorsque l'en-tête se réduit */
+.header.shrink {
+    padding: 5px 20px;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+}
+
+/* Pour les écrans plus petits (smartphones) */
+@media (max-width: 768px) {
+    .header {
+        width: 80%; /* L'en-tête prend plus de place sur les petits écrans */
+        padding: 8px 15px; /* Réduire les paddings pour les petits écrans */
+    }
+}
+
+
+
+/* Conteneur de l'en-tête */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 100%;
+}
+
+/* Logo */
+.logo h1 {
+    font-size: 1.6em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Menu de navigation */
+.navbar {
+    display: flex;
+    gap: 10px;
+    padding: 5px 0;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #f39c12;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a:active {
+    background-color: #f39c12;
+}
+
+/* Section Accueil */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden; /* Assurer que les éléments sortants sont cachés */
+}
+
+/* Superposition d'un flou et assombrissement sur l'image de fond */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/image.jpg') no-repeat center center/cover;
+    background-size: cover;
+    filter: blur(8px) brightness(50%); /* Effet de flou et d'assombrissement */
+    z-index: -1; /* S'assurer que l'image floue est derrière le texte */
+}
+
+/* Contenu du texte */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+/* Texte principal avec ombre portée */
+.hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Ombre portée pour le titre */
+    animation: slideUp 1s ease-out;
+}
+
+.hero p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    line-height: 1.5;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Ombre portée pour la description */
+    animation: fadeInUp 2s ease-out;
+}
+
+/* Animation du nom de l'entreprise */
+.company-name {
+    color: #FF6F61;
+    transition: color 0.3s ease;
+}
+
+.company-name:hover {
+    color: #fff;
+    animation: colorChange 1s ease-in-out infinite alternate;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes colorChange {
+    0% { color: #FF6F61; }
+    100% { color: #FFC107; }
+}
+
+
+/* Animation du feu */
+@keyframes fireAnimation {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 69, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.8);
+        transform: translateY(0);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 140, 0, 1), 0 0 50px rgba(255, 69, 0, 1), 0 0 70px rgba(255, 0, 0, 1);
+        transform: translateY(-5px);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 69, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.8);
+        transform: translateY(0);
+    }
+}
+
+/* Effet du texte en feu */
+.fire-effect {
+    font-weight: bold;
+    color: #361c13;
+    animation: fireAnimation 1.5s infinite alternate;
+}
+
+
+/* Icônes SVG derrière le texte */
+.svg-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Pour ne pas interférer avec l'interaction utilisateur */
+    z-index: -1; /* Derrière le texte */
+}
+
+.restaurant-icon {
+    position: absolute;
+    width: 100px; /* Taille des icônes plus grande */
+    height: auto;
+    opacity: 0.5; /* Opacité légère pour un effet subtil */
+}
+
+/* Positionnement aléatoire des icônes */
+.restaurant-icon:nth-child(1) {
+    top: 36%;
+    left: 21%;
+}
+
+.restaurant-icon:nth-child(2) {
+    top: 38%;
+    left: 74%;
+}
+
+.restaurant-icon:nth-child(3) {
+    top: 57%;
+    left: 46%;
+}
+
+
+/* Section Menu */
+.menu {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.menu h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Pour le slide up */
+    width: 30%;
+    text-align: center;
+    color: #fff;
+    /* Superposition de dégradé noir */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/EntreeSavoureuse.jpg');
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation slide-up pour les éléments de texte */
+.menu-item h3, .menu-item p, .menu-item .price {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Ombre pour améliorer la lisibilité */
+    margin: 20px 0;
+    opacity: 1;
+    transform: translateY(20px); /* Initialement décalé de 20px vers le bas */
+    transition: transform 0.3s ease-out, opacity 0.3s ease; /* Transition fluide lors du survol */
+}
+
+/* Lors du survol de l'élément, les textes glissent vers le haut */
+.menu-item:hover h3,
+.menu-item:hover p,
+.menu-item:hover .price {
+    transform: translateY(0); /* Fait glisser le texte vers sa position d'origine */
+    opacity: 1; /* Texte complètement visible */
+}
+
+/* Ajout de styles spécifiques pour chaque item */
+.menu-item.entree {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/EntreeSavoureuse.jpg');
+}
+
+.menu-item.plat {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/PlatPrincipal.jpg');
+}
+
+.menu-item.dessert {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/DessertGourmand.jpg');
+}
+
+.menu-item.pizza {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/PizzaMargherita.jpg');
+}
+
+.menu-item.salade {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/SaladeCésar.jpg');
+}
+
+.menu-item.risotto {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/RisottoauxChampignons.jpg');
+}
+
+/* Styles pour les titres et prix */
+.menu-item h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.menu-item p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.menu-item .price {
+    font-size: 1.2em;
+    color: #f39c12;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Section Avis */
+.avis {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #c4c9ca;
+}
+
+.avis h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.avis-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 300px; /* Ajuste cette valeur en fonction de la taille des commentaires */
+}
+
+.avis-item {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    width: 560px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transform: scale(0.8);
+}
+
+/* Ajouter l'effet de centrage des 3 commentaires */
+.avis-item.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.avis-item.left {
+    transform: translateX(-100%) scale(0.8);
+    opacity: 0.5; /* Ajouter un peu de transparence */
+}
+
+.avis-item.center {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+.avis-item.right {
+    transform: translateX(100%) scale(0.8);
+    opacity: 0.5; /* Ajouter un peu de transparence */
+}
+
+/* Animation pour l'apparition des commentaires */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Style de l'image des clients */
+.avis-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.rating {
+    color: #f39c12;
+    font-size: 1.5em;
+}
+
+
+/* Style général pour la section Contact */
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    flex-direction: column;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espace entre la carte et les informations */
+    width: 100%;
+    max-width: 1200px; /* Limiter la largeur du container */
+    margin-top: 20px;
+}
+
+.map-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    filter: grayscale(100%) contrast(100%) brightness(70%); /* Filtre noir et blanc */
+    transition: filter 0.3s ease; /* Transition pour effet au survol */
+}
+
+.map-container:hover {
+    filter: grayscale(0%) contrast(100%) brightness(100%); /* Restaure la couleur au survol */
+}
+
+/* Informations de contact à droite */
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fff;
+    padding: 77px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.contact-info h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-info p {
+    font-size: 1.2em;
+    margin: 15px 0;
+    color: #555;
+}
+
+.contact-info .info-item i {
+    margin-right: 10px;
+    color: #f39c12;
+}
+
+/* Styles pour les icônes des réseaux sociaux */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.social-icons a {
+    font-size: 2em;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #d49021; /* Couleur de survol */
+}
+
+/* Ajout de styles spécifiques pour les icônes */
+.social-icons i {
+    transition: transform 0.3s ease; /* Effet lors du survol */
+}
+
+.social-icons a:hover i {
+    transform: scale(1.2); /* Agrandir l'icône au survol */
+}
+
+
+/* Rendre la carte responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 300px;
+    }
+
+    .contact-info {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* Pour les liens dans la section Contact */
+.contact-info a {
+    color: inherit; /* Pour hériter de la couleur du texte parent par défaut */
+    text-decoration: none; /* Retirer le soulignement des liens */
+    transition: color 0.3s ease; /* Ajouter une transition douce */
+}
+
+/* Effet de survol pour les liens Adresse, Téléphone et Email */
+.contact-info a:hover {
+    color: #f39c12; /* Couleur d'orange désirée */
+}
+
+/* Appliquer la couleur à seulement "réseaux sociaux" */
+.contact-info .social-text strong {
+    color: #d49021; /* Appliquer la couleur orange */
+}
+
+/* Style général du footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Texte principal */
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Lien de navigation dans le footer */
+.footer-links {
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: #f39c12;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Changement de couleur au survol des liens */
+.footer-links a:hover {
+    color: #e67e22;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-links {
+        margin-top: 15px;
+    }
+
+    .footer-links a {
+        display: inline-block;
+        margin: 5px;
+    }
+}
+
